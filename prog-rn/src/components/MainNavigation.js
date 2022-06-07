@@ -57,11 +57,7 @@ class MainNavigation extends Component {
             .then( responseRegister => {
                 console.log(responseRegister); 
                 //Guardar documento en colección de usuarios.
-                db.collection('users').add({
-                            email: mail,
-                            userName: userName,
-                            createdAt: Date.now(),
-                        })
+                auth.currentUser.updateProfile({displayName:userName})
                         .then( responseUsers => this.setState({
                             loggedIn:true,
                         }))

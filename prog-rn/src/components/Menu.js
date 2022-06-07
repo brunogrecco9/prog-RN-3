@@ -10,8 +10,9 @@ import { FontAwesome, Foundation } from '@expo/vector-icons'
 
 //2Importar las pantallas
 import Home from '../screens/Home';
-// import Profile from '../screens/Profile';
-// import NewPost from '../screens/NewPost';
+import Perfil from '../screens/Perfil';
+import agregarPost from '../screens/agregarPost';
+import Buscador from '../screens/Buscador';
 
 
 //3 Guardar la ejecución de createBottomTabNavigator
@@ -39,21 +40,28 @@ class Menu extends Component {
                         { tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }
                     }
                 />
-                 {/* <Tab.Screen 
-                    name='New Post' 
-                    component={ NewPost }
+                 <Tab.Screen 
+                    name='Buscador' 
+                    component={ Buscador }
+                    options={
+                        { tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> }
+                    }
+                />
+                  <Tab.Screen 
+                    name='Agregar Posteo' 
+                    component={ agregarPost }
                     options={
                         { tabBarIcon: () => <FontAwesome name="photo" size={24} color="black" /> }
                     }
                 />
                 <Tab.Screen 
-                name='Profile' 
-                component={ Profile }
+                name='Perfil' 
+                component={ Perfil }
                 options={
                     { tabBarIcon: () => <FontAwesome name="user" size={24} color="black" /> }
                 }
                 initialParams={{logout: ()=>this.props.route.params.logout()}}
-                /> */}
+                /> 
                 
             </Tab.Navigator>        
 

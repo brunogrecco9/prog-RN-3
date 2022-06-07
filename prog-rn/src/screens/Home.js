@@ -7,7 +7,7 @@ import { View,
          ActivityIndicator,
          FlatList, 
          Image } from 'react-native';
-import Post from './Post';
+//import Post from './Post';
 
 class Home extends Component {
     constructor(props){
