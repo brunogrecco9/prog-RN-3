@@ -7,7 +7,7 @@ import { View,
          ActivityIndicator,
          FlatList, 
          Image } from 'react-native';
-//import Post from './Post';
+import Post from '../components/post';
 
 class Home extends Component {
     constructor(props){
@@ -46,7 +46,7 @@ class Home extends Component {
                     <FlatList 
                         data={this.state.posts}
                         keyExtractor={post => post.id}
-                        renderItem = { ({item}) => <Post dataPost={item} {...this.props} />}
+                        renderItem = { ({item}) => <Post info={item} {...this.props} />}
                     />
                     
                 </View>
