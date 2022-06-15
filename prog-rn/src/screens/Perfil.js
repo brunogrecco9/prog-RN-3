@@ -26,7 +26,11 @@ class Home extends Component {
         return(
                 <View>
                    <Text>{auth.currentUser.email}</Text>
+                   <TouchableOpacity onPress={()=>this.props.route.params.logout()}>
+                        <Text>Logout</Text>
+                    </TouchableOpacity>
                 </View>
+
 
         )
     }
