@@ -42,7 +42,7 @@ class Post extends Component {
         .then(response => {
             this.setState({
                 miLike:true,
-                cantLikes: this.state.cantLikes + 1
+                cantLikes: documento.likes.length
             })
         })
         .catch(error=> console.log(error))
@@ -56,7 +56,7 @@ class Post extends Component {
         .then(
             this.setState({
                 miLike:false,
-                cantLikes: this.state.cantLikes - 1
+                cantLikes: documento.likes.length
             })
         )
         .catch(error=> console.log(error))
@@ -97,7 +97,7 @@ class Post extends Component {
                 <TouchableOpacity 
                 onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}
                 >
-                    <Text>Comentar este mensaje</Text>
+                    <Text>Ver Comentarios</Text>
                 </TouchableOpacity>
             </>
         )

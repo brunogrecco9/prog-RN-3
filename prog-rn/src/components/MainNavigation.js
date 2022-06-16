@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 import Login from '../screens/Login';
 import Register from '../screens/Register';
 import Menu from './Menu'
-//import Comments from '../screens/Comments';
+import Comments from '../screens/comments';
 
 class MainNavigation extends Component {
 
@@ -97,9 +97,7 @@ class MainNavigation extends Component {
                             options = {{headerShown: false}}
                             initialParams = {{ logout: ()=> this.logout()}}
                         />
-                        {/* ACA VA LA PANTALL DE COMENTARIOS */}
-                        
-                        {/* ¿COMO SABEMOS CUAL ES EL POSTEO EN DONDE ESTAN LOS COMENTARIOS? */}
+                        <Stack.Screen name="Comments" component={Comments}/>
                     </Stack.Group> 
                     :
                     <Stack.Group> 

@@ -29,7 +29,7 @@ class agregarPost extends Component {
             comments:[],
             foto:this.state.urlFoto
         })
-        .then(response => console.log(response))
+        .then(response => this.props.navigation.navigate("Home"))
         .catch(error => console.log(error.message))
     }
 

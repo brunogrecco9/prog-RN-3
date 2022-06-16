@@ -63,22 +63,36 @@ class Register extends Component{
 const styles = StyleSheet.create({
     container:{
         paddingHorizontal:10,
-        marginTop: 10
+        marginTop: 10,
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        height: "100%"
     },
     title:{
-        marginBottom:20
+        marginBottom:20,
+        fontSize:50
+
     },
     field:{
         borderColor: '#dcdcdc',
         borderWidth: 1,
         borderRadius: 2,
         padding:3,
-        marginBottom:8
+        marginBottom:8,
+        width:200,
+        height: 50,
+
     },
     button: {
-        borderRadius: 2,
+        borderRadius: 10,
         padding:3,
         backgroundColor: 'green',
+        width:200,
+        height: 50,
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
     },
     buttonText:{
         color: '#fff'
