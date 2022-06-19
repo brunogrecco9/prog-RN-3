@@ -32,19 +32,22 @@ class Menu extends Component {
     render(){
         return(
             //Armar el menú. No se necesita repetir el container.
+        
             <Tab.Navigator>
                 <Tab.Screen 
                     name='Home' 
                     component={ Home }
                     options={
-                        { tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }
-                    }
+                        { tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> },
+                        {headerShown: false}
+                    } 
                 />
                  <Tab.Screen 
                     name='Buscador' 
                     component={ Buscador }
                     options={
-                        { tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> }
+                        { tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> },
+                        {headerShown: false}
                     }
                 />
                   <Tab.Screen 
@@ -58,7 +61,8 @@ class Menu extends Component {
                 name='Perfil' 
                 component={ Perfil }
                 options={
-                    { tabBarIcon: () => <FontAwesome name="user" size={24} color="black" /> }
+                    { tabBarIcon: () => <FontAwesome name="user" size={24} color="black" /> },
+                    {headerShown: false}
                 }
                 initialParams={{logout: ()=>this.props.route.params.logout()}}
                 /> 

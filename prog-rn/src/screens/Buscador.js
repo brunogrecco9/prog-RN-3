@@ -47,14 +47,14 @@ class Search extends Component {
     render(){
         // console.log(this.state);
         return(
-                <View>
+                <View >
                 {/* Si no hay resultados deben mostrar un mensaje al usuario. Puede ser un mensaje único o segmenteado: en caso de que el usuario no exista o si el usuario existe indicar que aún no tiene posteos. */}
-                    <Text>Posts del usuario: {this.state.whoIs}</Text>
+                    <Text style= {styles.post}>Buscagor de publicaciones{this.state.whoIs}</Text>
                     <View style={styles.form}>
                         <TextInput 
                             style={styles.field}
                             keyboardType='default'
-                            placeholder='email a buscar...'
+                            placeholder='Ingrese el correo electrónico del usuario'
                             value={this.state.email}
                             onChangeText={text => this.setState({ email: text})}
                         />  
@@ -64,7 +64,7 @@ class Search extends Component {
                             //👇 Les dejo un dato sorpresa para los que llegaron hasta acá: así se deshabilita un touchable opacity
                             disabled= {this.state.email == '' ? true : false }
                             >
-                            <Text style={ styles.buttonText}>Buscar</Text>
+                            <Text style={ styles.buttonText}>Go</Text>
                         </TouchableOpacity>                         
                     </View>
                     <FlatList 
@@ -85,16 +85,26 @@ const styles = StyleSheet.create({
         flex:1,
         padding:10
     },
+    post:{
+        flex: 1,
+        textAlign: 'center',
+        fontSize: 30,
+        marginTop: 250,
+
+    },
     form:{
         flex:1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        
         marginHorizontal:20,
+        marginTop: 300,
+       
+        
     },
     field:{
         borderColor: '#dcdcdc',
         borderWidth: 1,
-        borderRadius: 2,
+        borderRadius: 10,
         padding:3,
         marginBottom:8,
         width:'70%',
@@ -102,9 +112,9 @@ const styles = StyleSheet.create({
         lineHeight:40,
     },
     button: {
-        borderRadius: 2,
+        borderRadius: 10,
         padding:3,
-        backgroundColor: 'green',
+        backgroundColor: 'grey',
         width:'29%',
         textAlign: 'center',
     },

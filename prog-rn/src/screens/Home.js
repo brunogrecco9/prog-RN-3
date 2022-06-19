@@ -42,7 +42,7 @@ class Home extends Component {
         console.log(this.state);
         return(
                 <View>
-                    <Text>Posteos</Text>
+                    <Text style={styles.head}>Hola</Text>
                     <FlatList 
                         data={this.state.posts}
                         keyExtractor={post => post.id}
@@ -55,5 +55,11 @@ class Home extends Component {
     }
 }
 
+const styles= StyleSheet.create({
+    head:{
+        flex:1,
+        justifyContent:'center',
+        alignItems: 'center',
 
+    }})
 export default Home;

@@ -23,9 +23,11 @@ class Home extends Component {
 
     render(){
         console.log(auth.currentUser);
+       
         return(
                 <View>
                    <Text>{auth.currentUser.email}</Text>
+                   <Text>Ultimo inicio de sesión: {auth.currentUser.metadata.lastSignInTime}</Text>
                    <TouchableOpacity onPress={()=>this.props.route.params.logout()}>
                         <Text>Logout</Text>
                     </TouchableOpacity>

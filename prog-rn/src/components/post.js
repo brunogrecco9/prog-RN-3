@@ -71,12 +71,10 @@ class Post extends Component {
                 <View style={styles.container}>
                     <View style={{flex: 1}}>
                         <Text style={styles.messageOwner}>{documento.owner}</Text>
-                        <Image
-                    style={styles.camara}
-                    source={{uri: documento.foto}}
-                    />
+                        <Image style={styles.camara} source={{uri: documento.foto}} />
                         <Text style={styles.messageText}>{documento.caption}</Text>
                     </View>
+
                     <View style={styles.containerLike}>
                         <Text style={styles.likesCounter}>{this.state.cantLikes}</Text>
                         {
@@ -90,15 +88,16 @@ class Post extends Component {
                             <TouchableOpacity onPress={()=> this.like()}>
                                 <FontAwesome name='heart-o' size={24} color='black' /> 
                             </TouchableOpacity>
-
+                    
                         }
                     </View>
-                </View>
-                <TouchableOpacity 
-                onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}
-                >
-                    <Text>Ver Comentarios</Text>
+
+                    <TouchableOpacity 
+                       onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}>
+                       <Text> ver comentarios</Text>
                 </TouchableOpacity>
+                </View>
+
             </>
         )
     }
@@ -107,21 +106,29 @@ class Post extends Component {
 const styles= StyleSheet.create({
     container:{
         flex:1,
-        flexDirection:'row',
-        justifyContent:'space-between',
-        paddingVertical:8,
-        paddingHorizontal:6,
+        flexDirection:'column',
+        justifyContent:'center',
+        alignItems: 'center',
+      
+        paddingVertical:20,
+        
         borderRadius:5,
-        backgroundColor:'#F5E6E8',
+        backgroundColor:'white',
         marginHorizontal:10,
         marginTop:8
     },
     messageOwner:{
-        fontWeight:600
+        fontWeight:400,
+        paddingBottom: 6,
+        color: 'black',
+        textAlign: 'center'
     },
     messageText:{
+        color: 'black' ,
         paddingLeft:8,
-        paddingVertical:8
+        paddingVertical:8,
+        textAlign: 'center'
+
     },
     containerLike:{
         flexDirection:'row',
@@ -131,8 +138,12 @@ const styles= StyleSheet.create({
 
     },
     camara:{
-      height: 100,
-        width: 100 
+      height: 150,
+        width: 200 ,
+        alignContent: "center",
+        justifyContent: 'center',
+        textAlign: 'center'
+    
       },
 })
 
