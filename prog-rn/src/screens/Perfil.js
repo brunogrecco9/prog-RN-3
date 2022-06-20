@@ -6,9 +6,8 @@ import { View,
          StyleSheet, 
          ActivityIndicator,
          FlatList, 
-         Image } from 'react-native';
+         Image} from 'react-native';
 import Post from '../components/post';
-
 class Profile extends Component {
     constructor(props){
         super(props);
@@ -31,7 +30,6 @@ class Profile extends Component {
                         data: oneDoc.data()
                     })
                 })
-
                 this.setState({
                     posts: posteos
                 })
@@ -59,30 +57,72 @@ class Profile extends Component {
         }
     
     
-
-
     render(){
         console.log(auth.currentUser);
         console.log(this.state);
         return(
-                <View>
-                    <Text>Hola! Soy {this.state.username}</Text>
-                   <Text>{auth.currentUser.email}</Text>
-                   <Text>Ultimo inicio de sesión: {auth.currentUser.metadata.lastSignInTime}</Text>
-                   <TouchableOpacity onPress={()=>this.props.route.params.logout()}>
-                        <Text>Logout</Text>
-                    </TouchableOpacity>
-                    <FlatList 
-                        data={this.state.posts}
-                        keyExtractor={post => post.id}
-                        renderItem = { ({item}) => <Post info={item} {...this.props} />}
-                    />
+                <View style = {styles.mainContainer}>
+                    <View style = {styles.containerSuperior}>
+                        <View style = {styles.infoContainer}>
+                            <Text style = {styles.profileName}>{this.state.username}</Text>
+                            <Text style = {styles.profileInfo}>{auth.currentUser.email}</Text>
+                        </View>
+                        
+                       
+                            <TouchableOpacity style = {styles.button} onPress={()=>this.props.route.params.logout()}>
+                                <Text style = {styles.buttonText}>Logout</Text>
+                            </TouchableOpacity>
+                        
+                    </View>
+                    <View style = {styles.postContainer}>
+                        <FlatList 
+                            data={this.state.posts}
+                            keyExtractor={post => post.id}
+                            renderItem = { ({item}) => <Post info={item} {...this.props} />}
+                        />
+                    </View>
                 </View>
-
-
         )
     }
 }
-
-
+const styles = StyleSheet.create({
+    mainContainer:{
+        flex:1,
+        padding:24,
+        backgroundColor: 'white'
+    },
+    containerSuperior:{
+        flexDirection: 'row',
+        justifyContent:'space-between',
+        marginBottom: 24,
+        paddingBottom: 24,
+        borderBottomWidth: 1,
+        borderColor: '#D6DADF'
+    },
+    infoContainer:{
+    },
+    profilePicture:{
+        height: 40
+    },
+    profileName:{
+        fontSize: 24,
+        fontWeight: 'bold'
+    },
+    postContainer:{
+        padding:0
+    },
+    logOutContaienr:{
+        display: 'flex',
+        alignSelf: 'center'
+    },
+    button:{
+        backgroundColor: '#0069FE',
+        paddingHorizontal: 24,
+        paddingVertical: 12,
+        borderRadius: 10,
+    },
+    buttonText:{
+        color: 'white'
+    }
+})
 export default Profile;

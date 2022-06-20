@@ -69,33 +69,35 @@ class Post extends Component {
         return (
             <>
                 <View style={styles.container}>
-                    <View style={{flex: 1}}>
+                    <View style={styles.containerSuperior}>
                         <Text style={styles.messageOwner}>{documento.owner}</Text>
                         <Image style={styles.camara} source={{uri: documento.foto}} />
                         <Text style={styles.messageText}>{documento.caption}</Text>
                     </View>
 
-                    <View style={styles.containerLike}>
-                        <Text style={styles.likesCounter}>{this.state.cantLikes}</Text>
-                        {
-                            this.state.miLike
-                            ?
-                            
-                            <TouchableOpacity onPress={()=> this.unlike()}>
-                                <FontAwesome name='heart' size={24} color='red'/> 
-                            </TouchableOpacity>
-                            :
-                            <TouchableOpacity onPress={()=> this.like()}>
-                                <FontAwesome name='heart-o' size={24} color='black' /> 
-                            </TouchableOpacity>
-                    
-                        }
-                    </View>
+                    <View style = {styles.containerInferior}>
+                        <View style={styles.containerLike}>
+                            <Text style={styles.likesCounter}>{this.state.cantLikes}</Text>
+                            {
+                                this.state.miLike
+                                ?
+                                
+                                <TouchableOpacity onPress={()=> this.unlike()}>
+                                    <FontAwesome name='heart' size={24} color='red'/> 
+                                </TouchableOpacity>
+                                :
+                                <TouchableOpacity onPress={()=> this.like()}>
+                                    <FontAwesome name='heart-o' size={24} color='black' /> 
+                                </TouchableOpacity>
+                        
+                            }
+                        </View>
 
-                    <TouchableOpacity 
-                       onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}>
-                       <Text> ver comentarios</Text>
-                </TouchableOpacity>
+                        <TouchableOpacity 
+                        onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}>
+                        <Text> ver comentarios</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
             </>
@@ -138,13 +140,19 @@ const styles= StyleSheet.create({
 
     },
     camara:{
-      height: 150,
-        width: 200 ,
+      height: 300,
+        width: 300 ,
         alignContent: "center",
         justifyContent: 'center',
         textAlign: 'center'
     
       },
+    containerInferior:{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: '100%',
+        paddingHorizontal: 24
+    }
 })
 
 export default Post

@@ -74,7 +74,7 @@ export default class MyCamera extends Component {
             this.state.permisos ?
                 this.state.mostrarCamara === false ?
                 <>
-                    <Text>Aqui vamos a renderizar la imagen</Text>
+                    
                     <Image
                     style={styles.camara}
                     source={{uri: this.state.urlFoto}}
