@@ -47,10 +47,10 @@ class Search extends Component {
     render(){
         // console.log(this.state);
         return(
-                <View >
-                {/* Si no hay resultados deben mostrar un mensaje al usuario. Puede ser un mensaje único o segmenteado: en caso de que el usuario no exista o si el usuario existe indicar que aún no tiene posteos. */}
-                    <Text style= {styles.post}>Buscagor de publicaciones{this.state.whoIs}</Text>
-                    <View style={styles.form}>
+                <View style= {styles.containerB}>
+                                   {/* Si no hay resultados deben mostrar un mensaje al usuario. Puede ser un mensaje único o segmenteado: en caso de que el usuario no exista o si el usuario existe indicar que aún no tiene posteos. */}
+                    <Text style= {styles.buscador}>Buscador de publicaciones{this.state.whoIs}</Text>
+                     <View style={styles.form}>
                         <TextInput 
                             style={styles.field}
                             keyboardType='default'
@@ -81,29 +81,27 @@ class Search extends Component {
 }
 
 const styles = StyleSheet.create({
-    container:{
+    containerB:{
         flex:1,
-        padding:10
     },
-    post:{
-        flex: 1,
+    buscador:{
         textAlign: 'center',
         fontSize: 30,
         marginTop: 250,
+        marginBottom: 20,
 
     },
     form:{
-        flex:1,
         flexDirection: 'row',
+        marginHorizontal:20,   
+        marginLeft: 40,
         
-        marginHorizontal:20,
-        marginTop: 300,
-       
+
         
     },
     field:{
-        borderColor: '#dcdcdc',
         borderWidth: 1,
+        borderColor: '#0069FE',
         borderRadius: 10,
         padding:3,
         marginBottom:8,
@@ -113,13 +111,20 @@ const styles = StyleSheet.create({
     },
     button: {
         borderRadius: 10,
-        padding:3,
-        backgroundColor: 'grey',
-        width:'29%',
+        width:'20%',
         textAlign: 'center',
+        alignItems: 'center',
+        alignContent: "center",
+        marginLeft:10,
+        borderWidth: 1,
+        borderColor: '#0069FE',
+        backgroundColor: '#0069FE',
     },
     buttonText:{
-        color: '#fff'
+        color: '#fff',
+        alignItems: 'center',
+        alignContent: "center",
+        marginTop: 15,
     }
 })
 

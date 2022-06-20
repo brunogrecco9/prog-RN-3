@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         padding:3,
         borderWidth: 1,
         borderColor: '#0069FE',
-        backgroundColor: '#87cefa',
+        backgroundColor: '#0069FE',
         width:200,
         height: 50,
         display:"flex",
