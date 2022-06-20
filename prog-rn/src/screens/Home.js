@@ -61,14 +61,23 @@ class Home extends Component {
     render(){
         console.log(this.state);
         return(
-                <View>
-                    <Text style={styles.head}>Hola {this.state.username}</Text>
-                    <FlatList 
-                        data={this.state.posts}
-                        keyExtractor={post => post.id}
-                        renderItem = { ({item}) => <Post info={item} {...this.props} />}
-                    />
-                    
+                <View style = {styles.container}>
+                    <Text style={styles.head}>
+                        Hola {this.state.username}
+                    </Text>
+                
+                    {
+                        this.state.posts.length ?
+                            <FlatList
+                            style={styles.flat}
+                            data={this.state.posts}
+                            keyExtractor={post => post.id}
+                            renderItem = { ({item}) => <Post info={item} {...this.props} />}
+                        />
+                            :
+                            <Text style={styles.noHay}>No hay Posteos</Text>
+            }
+               
                 </View>
 
         )
@@ -81,5 +90,13 @@ const styles= StyleSheet.create({
         justifyContent:'center',
         alignItems: 'center',
 
-    }})
+    },
+    flat: {
+        width: "100%",
+        flexDirection: 'column',},
+    container: {
+        flexDirection: 'column',
+        flex: 1
+    }
+})
 export default Home;
