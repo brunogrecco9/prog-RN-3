@@ -87,13 +87,14 @@ class Home extends Component {
 const styles= StyleSheet.create({
     head:{
         flex:1,
-        justifyContent:'center',
+        textAlign: "center",
         alignItems: 'center',
 
     },
     flat: {
         width: "100%",
         flexDirection: 'column',},
+
     container: {
         flexDirection: 'column',
         flex: 1

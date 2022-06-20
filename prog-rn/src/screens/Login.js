@@ -40,7 +40,9 @@ class Login extends Component{
                     <Text style={ styles.buttonText}>Ingresar</Text>
                 </TouchableOpacity>   
                  <TouchableOpacity onPress={ ()=>this.props.navigation.navigate('Registro') }>
-                        <Text>No tengo cuenta</Text>
+                        <View style= {styles.cuenta}>
+                            <Text>No tengo cuenta</Text>
+                        </View>
                  </TouchableOpacity>
             
             </View>
@@ -60,15 +62,16 @@ const styles = StyleSheet.create({
     },
     title:{
         marginBottom:20,
-        fontSize:50
+        fontSize:50,
+        color: "black",
 
     },
     field:{
-        borderColor: '#dcdcdc',
+        borderColor: "#0069FE",
         borderWidth: 1,
-        borderRadius: 2,
-        padding:3,
+        borderRadius: 10,
         marginBottom:8,
+        paddingLeft: 10,
         width:200,
         height: 50,
 
@@ -76,7 +79,9 @@ const styles = StyleSheet.create({
     button: {
         borderRadius: 10,
         padding:3,
-        backgroundColor: 'green',
+        borderWidth: 1,
+        borderColor: '#0069FE',
+        backgroundColor: '#87cefa',
         width:200,
         height: 50,
         display:"flex",
@@ -84,7 +89,10 @@ const styles = StyleSheet.create({
         alignItems:"center",
     },
     buttonText:{
-        color: '#fff'
+        color: 'black'
+    },
+    cuenta: {
+        marginTop: 16,
     }
 })
 
