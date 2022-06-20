@@ -14,13 +14,18 @@ class Register extends Component{
         this.state={
             email: '',
             password: '',
-            userName:''
+            username:'',
         }
+    }
+
+    onSubmit() {
+        console.log(this.state);
     }
 
     render(){
         console.log(this.state.email);
         console.log(this.state.password);
+        console.log(this.state.username)
         console.log(this.props);
         return(
             <View style={styles.container}>
@@ -35,7 +40,7 @@ class Register extends Component{
                     style={styles.field}
                     keyboardType='default'
                     placeholder='User Name'
-                    onChangeText={text => this.setState({ userName: text})}
+                    onChangeText={text => this.setState({ username: text})}
                 />
                 <TextInput 
                     style={styles.field}
@@ -44,9 +49,9 @@ class Register extends Component{
                     secureTextEntry={true}
                     onChangeText={text => this.setState({ password: text})}
                 />
-                <TouchableOpacity style={styles.button} onPress={()=>this.props.route.params.register(this.state.email, this.state.password)}>
-                    <Text style={styles.buttonText}>Registrarme</Text>
-                </TouchableOpacity>   
+                <TouchableOpacity style={styles.botton} onPress={() => this.props.route.params.register(this.state.email, this.state.password, this.state.username)}>
+                    <Text style={styles.text}>Registrarme</Text>
+                </TouchableOpacity> 
 
                 <Text> El error es: {this.props.errores} </Text>
                  <TouchableOpacity onPress={ ()=>this.props.navigation.navigate('Login') }>

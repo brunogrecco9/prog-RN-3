@@ -1,18 +1,15 @@
-import React, {Component} from 'react';
-import { db, auth } from '../firebase/config';
+import React, { Component } from 'react';
+import { auth, db } from '../firebase/config';
+import {StyleSheet} from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-//Importar navegaciones
-import {NavigationContainer} from '@react-navigation/native';
-import  { createNativeStackNavigator} from '@react-navigation/native-stack';
-
-// Guardar la ejecución de Stack
 const Stack = createNativeStackNavigator();
 
-//importar las screens o lo que necesite el menú
 import Login from '../screens/Login';
 import Register from '../screens/Register';
-import Menu from './Menu'
-import Comments from '../screens/comments';
+import Menu from './Menu';
+import Comments from '../screens/Comments';
 
 class MainNavigation extends Component {
 
@@ -48,21 +45,22 @@ class MainNavigation extends Component {
 
     }
  
-    register(mail, pass, userName){
+    register(email, password, username){
         //Debería registrar en Firebase y cambiar el estado loggedIn: true
         //Debe pasar como método a el componente register
         //console.log(this.state)
         //Colocar el método de registración de Firebase
-        auth.createUserWithEmailAndPassword(mail, pass)
+        auth.createUserWithEmailAndPassword(email, password)
             .then( responseRegister => {
                 console.log(responseRegister); 
                 //Guardar documento en colección de usuarios.
-               db.collection("users").add({
-                 email: mail,
-                 username: userName,
+               db.collection('users').add({
+                 email: email,
+                 userName: username,
                  createdAt: Date.now()  
                })
-
+               .then(responseUsers => console.log(responseUsers))
+                    .catch(error => console.log(error))
                     })
             .catch( error => {
                 console.log(error);
@@ -109,11 +107,11 @@ class MainNavigation extends Component {
                                 {   login: (mail, pass)=>this.login(mail, pass),
                                 }}
                         />
-                        <Stack.Screen 
+                        <Stack.Screen
                             name='Registro'
                             options = {{headerShown: false}}
-                            initialParams = { {register: (mail, pass)=>this.register(mail, pass)}}
-                            children = {(navigationProps)=><Register errores={this.state.registerError} {...navigationProps}/>}
+                            initialParams={{ register: (mail, pass, username) => this.register(mail, pass, username) }}
+                            children={(navigationProps) => <Register errores={this.state.registerError} {...navigationProps} />}
                         />
                     </Stack.Group>
                 }

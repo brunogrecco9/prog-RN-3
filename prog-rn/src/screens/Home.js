@@ -13,7 +13,8 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state={
-            posts:[]
+            posts:[],
+            username: ''
         }
     }
     
@@ -33,8 +34,27 @@ class Home extends Component {
                 })
             }
         )
-
         
+        db.collection("users")
+            .where("email", "==", auth.currentUser.email)
+            // .orderBy("createdAt", "desc")
+            .onSnapshot(
+                (docs) => {
+                    let postsAux = [];
+                    docs.forEach((doc) => {
+                        postsAux.push({
+                            id: doc.id,
+                            data: doc.data(),
+                        });
+                    }); // For each
+                    console.log(postsAux)
+                    this.setState({
+                        username: postsAux[0].data.userName,
+                        loader: false,
+                    });
+                   ;
+                }
+            );
     }
 
 
@@ -42,7 +62,7 @@ class Home extends Component {
         console.log(this.state);
         return(
                 <View>
-                    <Text style={styles.head}>Hola</Text>
+                    <Text style={styles.head}>Hola {this.state.username}</Text>
                     <FlatList 
                         data={this.state.posts}
                         keyExtractor={post => post.id}
