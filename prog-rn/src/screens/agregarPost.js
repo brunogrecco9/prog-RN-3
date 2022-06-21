@@ -52,10 +52,11 @@ class agregarPost extends Component {
                     value={this.state.message}
                    placeholder="Añade una descripción..."
                    />
-            
-                      <TouchableOpacity style={styles.button} onPress={() =>this.subirposteo()}>
-                          <Text>Subir Posteo</Text>
-                      </TouchableOpacity>
+                    <View style = {styles.container2}>
+                        <TouchableOpacity style={styles.button} onPress={() =>this.subirposteo()}>
+                            <Text style = {styles.buttonText}>Subir Posteo</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             }
             </>
@@ -70,22 +71,26 @@ const styles = StyleSheet.create({
         borderColor:'#c3c3c3',
         height:'auto',
         minHeight:60,
-        marginTop:10
+        marginTop:10,
+        paddingHorizontal: 16
+    },
+    container2: {
+        marginTop: 40,
+        padding: 5,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-around',   
     },
     button:{
         borderRadius: 10,
-        width:100,
-        height: 40,
-        alignSelf: 'center',
-        marginTop:30,
         borderWidth: 1,
         borderColor: '#0069FE',
         backgroundColor: '#0069FE',
-        paddingLeft: 8,
-        paddingTop: 10,
-
-        
-
+        paddingHorizontal: '24px',
+        paddingVertical: '12px',
+    },
+    buttonText:{
+        color: 'white'
     },
     container:{
         flex: 1,

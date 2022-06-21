@@ -1,3 +1,4 @@
+
 import { View, Text, FlatList, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
 import React, {Component} from 'react'
 import { db, auth } from '../firebase/config'
@@ -49,12 +50,13 @@ class Comments extends Component {
           <View style={styles.container}>
               {this.state.comentarios.length!=0?
               <FlatList
+              style = {styles.listComentarios}
               data={this.state.comentarios}
               keyExtractor={( item ) => item.createdAt.toString()}
-              renderItem={ ( {item} ) => <View style={styles.comment}>
-                  <Text>{item.owner}</Text>
-                  <Text>{item.comentario}</Text>
-              </View>
+              renderItem={ ( {item} ) => 
+                <View style={styles.comment}>
+                    <Text><b>{item.owner}</b> {item.comentario}</Text>
+                </View>
           }
               />:
               <Text>Publicacion Sin Comentarios</Text>}
@@ -81,13 +83,18 @@ class Comments extends Component {
 
 const styles = StyleSheet.create({
     container:{
-      //flex: 1,
-      alignItems:'center'
+        height: '90%',
     },
+    listComentarios:{
+        borderBottomColor: 'gray',
+        borderBottomWidth: 1,
+        backgroundColor: 'white',
+        paddingHorizontal:24,
+    },  
     containerForm:{
         flexDirection: 'row',
-        marginHorizontal:20,   
-        marginLeft: 40,
+        paddingHorizontal:24,
+        marginTop: 24,
     },
         
     comment:{
@@ -100,31 +107,35 @@ const styles = StyleSheet.create({
    // },
     imput:{
         borderWidth: 1,
-        borderColor: '#0069FE',
+        borderColor: 'gray',
         borderRadius: 10,
-        padding:3,
+        paddingHorizontal:16,
         marginBottom:8,
         width:'70%',
         marginBottom: 0,
         lineHeight:40,
+        backgroundColor: 'white'
     },
     button:{
         borderRadius: 10,
-        width:'30%',
-        textAlign: 'center',
-        alignItems: 'center',
-        alignContent: "center",
-        marginLeft:10,
         borderWidth: 1,
         borderColor: '#0069FE',
         backgroundColor: '#0069FE',
+        paddingHorizontal: '24px',
+        paddingVertical: '12px',
+        marginLeft: 16     
     },
     buttonText:{
         color: '#fff',
         alignItems: 'center',
         alignContent: "center",
-        marginTop: 15,
     }
   })
 
 export default Comments
+
+
+
+
+
+

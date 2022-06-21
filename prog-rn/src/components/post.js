@@ -69,10 +69,17 @@ class Post extends Component {
         return (
             <>
                 <View style={styles.container}>
+
                     <View style={styles.containerSuperior}>
-                        <Text style={styles.messageOwner}>{documento.owner}</Text>
-                        <Image style={styles.camara} source={{uri: documento.foto}} />
-                        <Text style={styles.messageText}>{documento.caption}</Text>
+
+                        <View style={styles.containerFoto}>
+                            <Image style={styles.camara} source={{uri: documento.foto}} />
+                        </View>
+
+                        <View style={styles.containerInfo}>
+                            <Text style={styles.messageOwner}><b>{documento.owner}</b> {documento.caption}</Text>
+                        </View>
+
                     </View>
 
                     <View style = {styles.containerInferior}>
@@ -92,11 +99,12 @@ class Post extends Component {
                         
                             }
                         </View>
-
-                        <TouchableOpacity 
-                        onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}>
-                        <Text> ver comentarios</Text>
-                        </TouchableOpacity>
+                        
+                        <View>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Comments', {id: this.props.info.id})}>
+                                <Text>Ver comentarios</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
 
@@ -111,13 +119,11 @@ const styles= StyleSheet.create({
         flexDirection:'column',
         justifyContent:'center',
         alignItems: 'center',
-      
-        paddingVertical:20,
-        
         borderRadius:5,
         backgroundColor:'white',
         marginHorizontal:10,
-        marginTop:8
+        marginTop:24,
+        width: 300
     },
     messageOwner:{
         fontWeight:400,
@@ -132,27 +138,46 @@ const styles= StyleSheet.create({
         textAlign: 'center'
 
     },
+    containerFoto:{
+        
+    },
+    containerInfo:{
+        flexDirection: 'row',
+        paddingTop:20,
+        paddingHorizontal: 16
+    },
     containerLike:{
         flexDirection:'row',
-    },
+        marginBottom:8,
+        alignItems: 'center'
+        },
     likesCounter:{
         marginRight:8,
 
     },
     camara:{
-      height: 300,
+        height: 300,
         width: 300 ,
         alignContent: "center",
         justifyContent: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5
     
       },
     containerInferior:{
-        flexDirection: "row",
         justifyContent: "space-between",
         width: '100%',
-        paddingHorizontal: 24
+        paddingHorizontal: 16,
+        paddingBottom:20,
     }
 })
 
 export default Post
+
+
+
+
+
+
+
