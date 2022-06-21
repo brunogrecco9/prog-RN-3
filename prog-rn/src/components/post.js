@@ -19,7 +19,7 @@ class Post extends Component {
     componentDidMount(){
         const documento = this.props.info.data
         const estaMiLike = documento.likes.includes(auth.currentUser.email)
-        
+        console.log(documento)
         if(documento.likes){
             this.setState({
                 cantLikes: documento.likes.length
@@ -42,7 +42,7 @@ class Post extends Component {
         .then(response => {
             this.setState({
                 miLike:true,
-                cantLikes: documento.likes.length
+                cantLikes: this.state.cantLikes +1
             })
         })
         .catch(error=> console.log(error))
@@ -56,7 +56,7 @@ class Post extends Component {
         .then(
             this.setState({
                 miLike:false,
-                cantLikes: documento.likes.length
+                cantLikes: this.state.cantLikes -1
             })
         )
         .catch(error=> console.log(error))

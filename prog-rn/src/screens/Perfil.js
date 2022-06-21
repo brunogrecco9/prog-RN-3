@@ -35,7 +35,7 @@ class Profile extends Component {
                 })
             }
         )
-        db.collection("users")
+        /*db.collection("users")
             .where("email", "==", auth.currentUser.email)
             .onSnapshot(
                 (docs) => {
@@ -48,12 +48,12 @@ class Profile extends Component {
                     }); 
                     console.log(postsAux)
                     this.setState({
-                        username: postsAux[0].data.userName,
+                        //username: postsAux[0].data.userName,
                         loader: false,
                     });
                     ;
                 }
-            );
+            );*/
         }
     
     

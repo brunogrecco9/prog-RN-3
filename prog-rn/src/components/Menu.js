@@ -38,16 +38,15 @@ class Menu extends Component {
                     name='Home' 
                     component={ Home }
                     options={
-                        { tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> },
-                        {headerShown: false}
+                        { tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }
                     } 
                 />
                  <Tab.Screen 
                     name='Buscador' 
                     component={ Buscador }
                     options={
-                        { tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> },
-                        {headerShown: false}
+                        { tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> }
+                        
                     }
                 />
                   <Tab.Screen 
@@ -61,8 +60,8 @@ class Menu extends Component {
                 name='Perfil' 
                 component={ Perfil }
                 options={
-                    { tabBarIcon: () => <FontAwesome name="user" size={24} color="black" /> },
-                    {headerShown: false}
+                    { tabBarIcon: () => <FontAwesome name="user" size={24} color="black" /> }
+                    
                 }
                 initialParams={{logout: ()=>this.props.route.params.logout()}}
                 /> 

@@ -68,7 +68,9 @@ class Comments extends Component {
                       keyboardType='default'
                    />
 
-                   <TouchableOpacity  style={styles.button}  onPress={()=> this.onSubmit()}>
+                   <TouchableOpacity  style={styles.button}  onPress={()=> this.onSubmit()}
+                   disabled={this.state.nuevoComentario==""?true:false}
+                   >
                       <Text style={ styles.buttonText}>Comentar</Text>
                   </TouchableOpacity>
              </View>

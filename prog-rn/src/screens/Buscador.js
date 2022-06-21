@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     buscador:{
         textAlign: 'center',
         fontSize: 30,
-        marginTop: 250,
+        marginTop: 20,
         marginBottom: 20,
 
     },
