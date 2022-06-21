@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth, db } from '../firebase/config'; //Auth deja disponibles metodos asincronicos para registrar y loguear usuarios
+import { auth, db } from '../firebase/config'; //Auth deja disponibles metodos asincronicos para registrar y loguear usuarios, ademas lo importamos para chequear si el usuario esta logueado
 import {StyleSheet} from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -22,9 +22,9 @@ class MainNavigation extends Component {
     }
     
     componentDidMount(){
-      //chequear que el usuario esté logueado.
-      auth.onAuthStateChanged(user => {
-            // Si el usuario está logueado, cambiar el estado loggedIn: true
+      auth.onAuthStateChanged(user => { //miramos si el usuario esta logueado 
+
+            // Si el usuario está logueado, cambiamos el estado loggedIn: true, asi entra directamente a la página
             if(user){
                 this.setState({
                     loggedIn:true

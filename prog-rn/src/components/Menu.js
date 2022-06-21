@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //Import de íconos
-import { FontAwesome, Foundation } from '@expo/vector-icons'
+import { FontAwesome} from '@expo/vector-icons'
 
 
 //2Importar las pantallas
@@ -18,8 +18,8 @@ import Buscador from '../screens/Buscador';
 //3 Guardar la ejecución de createBottomTabNavigator
 const Tab = createBottomTabNavigator();
 
-//4 Armar el compoente con el render del menú
 
+//4 Armar el compoente con el render del menú
 class Menu extends Component {
     constructor(props){
         super(props)
@@ -33,7 +33,7 @@ class Menu extends Component {
         return(
             //Armar el menú. No se necesita repetir el container.
         
-            <Tab.Navigator>
+            <Tab.Navigator screenOptions= {{tabBarShowLabel: false}}>
                 <Tab.Screen 
                     name='Home' 
                     component={ Home }
@@ -46,6 +46,7 @@ class Menu extends Component {
                     component={ Buscador }
                     options={
                         { tabBarIcon: () => <FontAwesome name="search" size={24} color="black" /> }
+
                         
                     }
                 />

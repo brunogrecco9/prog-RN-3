@@ -23,7 +23,6 @@ export default class MyCamera extends Component {
     }
 
     tomaLaFoto(){
-        console.log('Digan Whisky!')
         this.metodosDeCamara.takePictureAsync()
         .then(dataFoto => {
             console.log(dataFoto)
@@ -68,25 +67,28 @@ export default class MyCamera extends Component {
 
 
   render() {
+      console.log(this.state.urlFoto)
     return (
         <View style={styles.container}>
         {
             this.state.permisos ?
                 this.state.mostrarCamara === false ?
                 <>
-                    
-                    <Image
-                    style={styles.camara}
-                    source={{uri: this.state.urlFoto}}
-                    />
+                    <View style = {styles.containerFoto}>
+                        <Image
+                            style={styles.foto2}
+                            source={{ uri: this.state.urlFoto }}
+                            resizeMode = 'cover'
+                        />
+                    </View>
                     <View style={styles.container2}>
                         <TouchableOpacity style={styles.button} onPress={()=> this.guardarFoto()}>
-                            <Text>
+                            <Text style={styles.foto}>
                                 Aceptar
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}  onPress={()=> this.descartarFoto()}>
-                            <Text>
+                        <TouchableOpacity style={styles.buttonRechazar}  onPress={()=> this.descartarFoto()}>
+                            <Text style={styles.fotoRechazar}>
                                 Rechazar
                             </Text>
                         </TouchableOpacity>
@@ -119,12 +121,14 @@ const styles = StyleSheet.create({
         
     },
     container2: {
-       
-        flexDirection:  "row",
-        justifyContent: "space-evenly",
-       //margin: 'auto'
-        
-
+        marginTop: 40,
+        padding: 5,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-around',   
+    },
+    containerFoto:{
+        height: '80%'
     },
     camara:{
       
@@ -136,7 +140,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#0069FE',
         paddingHorizontal: '24px',
         paddingVertical: '12px',
-        marginTop: 350
+        //alignSelf: 'center'
+        
+    },
+    buttonRechazar:{
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#0069FE',
+        paddingHorizontal: '24px',
+        paddingVertical: '12px',
         //alignSelf: 'center'
         
     },
@@ -147,10 +159,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#0069FE',
         paddingHorizontal: '24px',
         paddingVertical: '12px',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginVertical: 24
     
 },
     foto: {
         textAlign: "center",
-    }
+        color: 'white'
+    },
+    fotoRechazar: {
+        textAlign: "center",
+        color: '#0069FE'
+    },
+    foto2: {
+        height: '100%',
+        width: '100%',
+        borderRadius: 4
+    },
 })

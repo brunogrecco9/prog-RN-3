@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {
-    View,
+    View, 
     Text,
     TextInput, //importamos textImput para poder "simular" un formulario
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-import {auth} from '../firebase/config';
 
 class Register extends Component{
     constructor(props){
@@ -24,7 +23,7 @@ class Register extends Component{
         console.log(this.state.username)
         console.log(this.props);
 
-        
+
         //para un contenedor del form, utilizamos el view
         return(
             <View style={styles.container}> 
