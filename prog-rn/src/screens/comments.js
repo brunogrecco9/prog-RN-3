@@ -59,23 +59,19 @@ class Comments extends Component {
               />:
               <Text>Publicacion Sin Comentarios</Text>}
             
-            <View>
-                <TextInput
-                placeholder='Agrega tu comentario'
-                onChangeText={
-                    (text) => this.setState({nuevoComentario : text})
-                }
-                value={this.state.nuevoComentario}
-                keyboardType='default'
-                style={styles.inputComment}
-                />
-                <TouchableOpacity 
-                onPress={()=> this.onSubmit()}
-                style={styles.btnComment}
-                >
-                    <Text>Comentar</Text>
-                </TouchableOpacity>
-            </View>
+              <View style={styles.containerForm}>
+
+                 <TextInput style={styles.imput}
+                      placeholder='Agrega tu comentario'
+                      onChangeText={ (text) => this.setState({nuevoComentario : text})}
+                      value={this.state.nuevoComentario}
+                      keyboardType='default'
+                   />
+
+                   <TouchableOpacity  style={styles.button}  onPress={()=> this.onSubmit()}>
+                      <Text style={ styles.buttonText}>Comentar</Text>
+                  </TouchableOpacity>
+             </View>
           </View>
         )
     }
@@ -83,28 +79,49 @@ class Comments extends Component {
 
 const styles = StyleSheet.create({
     container:{
-      width:'100%',
-      height:'100%',
-      justifyContent:'center',
+      //flex: 1,
       alignItems:'center'
     },
+    containerForm:{
+        flexDirection: 'row',
+        marginHorizontal:20,   
+        marginLeft: 40,
+    },
+        
     comment:{
-        marginTop:30
+        marginTop:20,
+        marginBottom: 20,
     },
-    containerComment:{
-      flexDirection:'row',
-      width:'90%'
+    //containerComment:{
+      //flexDirection:'row',
+     // width:'50%'
+   // },
+    imput:{
+        borderWidth: 1,
+        borderColor: '#0069FE',
+        borderRadius: 10,
+        padding:3,
+        marginBottom:8,
+        width:'70%',
+        marginBottom: 0,
+        lineHeight:40,
     },
-    inputComment:{
-      borderWidth:1,
-      backgroundColor:'#c3c3c3',
-      width:'80%'
+    button:{
+        borderRadius: 10,
+        width:'30%',
+        textAlign: 'center',
+        alignItems: 'center',
+        alignContent: "center",
+        marginLeft:10,
+        borderWidth: 1,
+        borderColor: '#0069FE',
+        backgroundColor: '#0069FE',
     },
-    btnComment:{
-      width:'20%',
-      padding:10,
-      backgroundColor:'#d3d3d3'
-  
+    buttonText:{
+        color: '#fff',
+        alignItems: 'center',
+        alignContent: "center",
+        marginTop: 15,
     }
   })
 

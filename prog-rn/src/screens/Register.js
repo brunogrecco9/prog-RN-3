@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {
     View,
     Text,
-    TextInput,
+    TextInput, //importamos textImput para poder "simular" un formulario
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
@@ -27,14 +27,16 @@ class Register extends Component{
         console.log(this.state.password);
         console.log(this.state.username)
         console.log(this.props);
+
+        //para un contenedor del form, utilizamos el view
         return(
-            <View style={styles.container}>
+            <View style={styles.container}> 
                 <Text style={styles.title}>Registro</Text>
                 <TextInput 
                     style={styles.field}
-                    keyboardType='default'
+                    keyboardType='email-address' //tipo de teclado que vamos a mostrar, en este caso, un teclado para escribir email.
                     placeholder='Email'
-                    onChangeText={text => this.setState({ email: text})}
+                    onChangeText={text => this.setState({ email: text})} //Funcion que toma los datos que ingresa el user y los almacema en el estado
                 />
                 <TextInput 
                     style={styles.field}
@@ -46,11 +48,12 @@ class Register extends Component{
                     style={styles.field}
                     keyboardType='default'
                     placeholder='password'
-                    secureTextEntry={true}
+                    secureTextEntry={true} //porque es una contraseña
                     onChangeText={text => this.setState({ password: text})}
                 />
-                <TouchableOpacity style={styles.button} onPress={() => this.props.route.params.register(this.state.email, this.state.password, this.state.username)}>
-                    <Text style={styles.text}>Registrarme</Text>
+
+                <TouchableOpacity style={styles.button} onPress={() => this.props.route.params.register(this.state.email, this.state.password, this.state.username)}> 
+                    <Text style={styles.text}>Registrarme</Text> 
                 </TouchableOpacity> 
 
                 <Text> {this.props.errores} </Text>
@@ -60,7 +63,7 @@ class Register extends Component{
                  </TouchableOpacity>
             
             </View>
-
+//aca simulamos un boton de registrarme y de "ya tengo cuenta"
         )
     }
 

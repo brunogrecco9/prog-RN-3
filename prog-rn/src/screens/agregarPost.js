@@ -39,28 +39,23 @@ class agregarPost extends Component {
             <>
             {
                 this.state.mostrarComponenteCamara ?
-                <MyCamera cuandoSubaLaImagen={(url)=> this.cuandoSubaLaImagen(url)}/>
+                <MyCamera style={styles.camara} cuandoSubaLaImagen={(url)=> this.cuandoSubaLaImagen(url)}/>
                 :
 
-                <View>
-                    <Text>Foto cargada con exito</Text>
+                <View style={styles.container}> 
+                    <Text style={styles.title} >¡Foto cargada con éxito!</Text>
                     <TextInput 
                     style={styles.textarea}
                     onChangeText= {(text)=> this.setState({
                         message: text
                     })}
                     value={this.state.message}
-                   placeholder="Descripcion"
+                   placeholder="Añade una descripción..."
                    />
             
-                    <TouchableOpacity
-                        style={styles.btn}
-                        onPress={() =>this.subirposteo()}
-                           
-            
-                    >
-                        <Text>Subir Posteo</Text>
-                    </TouchableOpacity>
+                      <TouchableOpacity style={styles.button} onPress={() =>this.subirposteo()}>
+                          <Text>Subir Posteo</Text>
+                      </TouchableOpacity>
                 </View>
             }
             </>
@@ -77,11 +72,36 @@ const styles = StyleSheet.create({
         minHeight:60,
         marginTop:10
     },
-    btn:{
-        marginTop:16,
-        borderColor:'red',
-        borderWidth:1
+    button:{
+        borderRadius: 10,
+        width:100,
+        height: 40,
+        alignSelf: 'center',
+        marginTop:30,
+        borderWidth: 1,
+        borderColor: '#0069FE',
+        backgroundColor: '#0069FE',
+        paddingLeft: 8,
+        paddingTop: 10,
+
+        
+
+    },
+    container:{
+        flex: 1,
+
+    },
+    camara:{
+        borderRadius: 30,
+    },
+    title:{
+        textAlign: 'center',
+        fontSize: 30,
+        marginTop: 20,
+        marginBottom: 20
     }
+
+
 })
 
 export default agregarPost

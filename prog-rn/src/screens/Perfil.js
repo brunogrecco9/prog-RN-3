@@ -66,6 +66,7 @@ class Profile extends Component {
                         <View style = {styles.infoContainer}>
                             <Text style = {styles.profileName}>{this.state.username}</Text>
                             <Text style = {styles.profileInfo}>{auth.currentUser.email}</Text>
+                           
                         </View>
                         
                        
@@ -81,6 +82,8 @@ class Profile extends Component {
                             renderItem = { ({item}) => <Post info={item} {...this.props} />}
                         />
                     </View>
+                    <Text style = {styles.profileInfo}> Último inicio de sesión: {auth.currentUser.metadata.lastSignInTime}</Text>
+                            
                 </View>
         )
     }

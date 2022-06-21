@@ -13,12 +13,13 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state={
-            posts:[],
+            posts:[], //array de datos posts
             username: ''
         }
     }
     
     componentDidMount(){
+
         db.collection('posts').orderBy("createdAt","desc").onSnapshot(
             docs => {
                 let posts = [];
@@ -56,27 +57,30 @@ class Home extends Component {
                 }
             );
     }
-
+    
 
     render(){
         console.log(this.state);
         return(
-                <View style = {styles.container}>
+                <View style = {styles.container}> 
+
+
                      <Text style={styles.head}>
-                          Hola {this.state.username}!
+                         ¡Hola, {this.state.username}!
                      </Text>
-                
                     {
                         this.state.posts.length ?
 
                             <FlatList
-                               style={styles.flat}
-                               data={this.state.posts}
-                               keyExtractor={post => post.id}
-                               renderItem = { ({item}) => <Post info={item} {...this.props} />}
+                               style={styles.flat} 
+                               data={this.state.posts} //array de datos con el contenido de los items a mostrar
+                               keyExtractor={post => post.id} //funcion con un parametro que representa cada item del array de datos, retorna una clave unica
+                               //equivalente a la prop key de map()
+                               renderItem = { ({item}) => <Post info={item} {...this.props} />}  //funciom con un OL como parametro y retorna el componente a renderizar
                             />
                         :
-                            <Text style={styles.noHay}>Aún no hay Posteos</Text>
+            
+                        <Text style={styles.noHay}>Aún no hay Posteos</Text>
                     }
                
                 </View>
@@ -103,6 +107,11 @@ const styles= StyleSheet.create({
     container: {
         flexDirection: 'column',
         flex: 1,
+    },
+
+    noHay:{
+        textAlign: 'center',
+        marginTop: 200
     }
 })
 export default Home;

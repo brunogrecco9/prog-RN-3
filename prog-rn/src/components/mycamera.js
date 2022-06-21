@@ -79,13 +79,13 @@ export default class MyCamera extends Component {
                     style={styles.camara}
                     source={{uri: this.state.urlFoto}}
                     />
-                    <View style={styles.container}>
-                        <TouchableOpacity onPress={()=> this.guardarFoto()}>
+                    <View style={styles.container2}>
+                        <TouchableOpacity style={styles.button} onPress={()=> this.guardarFoto()}>
                             <Text>
                                 Aceptar
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity  onPress={()=> this.descartarFoto()}>
+                        <TouchableOpacity style={styles.button}  onPress={()=> this.descartarFoto()}>
                             <Text>
                                 Rechazar
                             </Text>
@@ -100,8 +100,8 @@ export default class MyCamera extends Component {
                         type={Camera.Constants.Type.back}
                         ref={ metodos => this.metodosDeCamara = metodos}
                     />
-                    <TouchableOpacity style={styles.button} onPress = {()=> this.tomaLaFoto()}>
-                        <Text>Sacar foto</Text>
+                    <TouchableOpacity style={styles.buttonF} onPress = {()=> this.tomaLaFoto()}>
+                        <Text style={styles.foto}>Sacar foto</Text>
                     </TouchableOpacity>
                 </View>
             :
@@ -115,14 +115,42 @@ export default class MyCamera extends Component {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        
+    },
+    container2: {
+       
+        flexDirection:  "row",
+        justifyContent: "space-evenly",
+       //margin: 'auto'
+        
+
     },
     camara:{
-      flex:7  
+      
     },
     button:{
-        flex:1,
-        justifyContent:'center',
-        alignItems: 'center'
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#0069FE',
+        backgroundColor: '#0069FE',
+        paddingHorizontal: '24px',
+        paddingVertical: '12px',
+        marginTop: 350
+        //alignSelf: 'center'
+        
     },
+    buttonF:{
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#0069FE',
+        backgroundColor: '#0069FE',
+        paddingHorizontal: '24px',
+        paddingVertical: '12px',
+        alignSelf: 'center'
+    
+},
+    foto: {
+        textAlign: "center",
+    }
 })
