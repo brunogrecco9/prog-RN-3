@@ -5,9 +5,7 @@ import { View,
          TextInput,
          TouchableOpacity, 
          StyleSheet, 
-         ActivityIndicator,
-         FlatList, 
-         Image } from 'react-native';
+         FlatList } from 'react-native';
 import Post from '../components/post';
 
 class Search extends Component {
