@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth, db } from '../firebase/config';
+import { auth, db } from '../firebase/config'; //Auth deja disponibles metodos asincronicos para registrar y loguear usuarios
 import {StyleSheet} from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -22,8 +22,8 @@ class MainNavigation extends Component {
     }
     
     componentDidMount(){
-         //chequear que el usuario esté logueado.
-       auth.onAuthStateChanged(user => {
+      //chequear que el usuario esté logueado.
+      auth.onAuthStateChanged(user => {
             // Si el usuario está logueado, cambiar el estado loggedIn: true
             if(user){
                 this.setState({
@@ -34,8 +34,10 @@ class MainNavigation extends Component {
     }
 
 
-    login(mail, pass){
+    login(mail, pass){ //para que login funcione necesita estos dos datos
+
         //Debería loguear en Firebase y cambiar el estado loggedIn: true
+
         //Debe pasar como método a el componente login
         auth.signInWithEmailAndPassword(mail, pass)
             .then(response => this.setState({
@@ -45,14 +47,17 @@ class MainNavigation extends Component {
 
     }
  
-    register(email, password, username){
+    register(email, password, username){ //para que register funcione necesita estos tres datos
+
         //Debería registrar en Firebase y cambiar el estado loggedIn: true
+
         //Debe pasar como método a el componente register
-        //console.log(this.state)
-        //Colocar el método de registración de Firebase
+
+        //Metodo de registracion de firebase:
         auth.createUserWithEmailAndPassword(email, password)
-            .then( responseRegister => {
+            .then( responseRegister => { //Como es un metodo asincronico usamos un .then con una respuesta que usamos dentro de una function
                 console.log(responseRegister); 
+                gi
                 //Guardar documento en colección de usuarios.
                db.collection('users').add({
                  email: email,
@@ -62,7 +67,7 @@ class MainNavigation extends Component {
                .then(responseUsers => console.log(responseUsers))
                     .catch(error => console.log(error))
                     })
-            .catch( error => {
+            .catch( error => { //por si hay un error, lo vemos por consola
                 console.log(error);
                 this.setState({
                      registerError: error.message
