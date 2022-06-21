@@ -101,12 +101,12 @@ const styles= StyleSheet.create({
     },
     flat: {
         width: "100",
-        flexDirection: 'column',
     },
 
     container: {
         flexDirection: 'column',
         flex: 1,
+        alignItems: 'center'
     },
 
     noHay:{
