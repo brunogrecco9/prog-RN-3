@@ -46,7 +46,7 @@ class Search extends Component {
         // console.log(this.state);
         return(
                 <View style= {styles.containerB}>
-                                   {/* Si no hay resultados deben mostrar un mensaje al usuario. Puede ser un mensaje único o segmenteado: en caso de que el usuario no exista o si el usuario existe indicar que aún no tiene posteos. */}
+                
                     <Text style= {styles.buscador}>Buscador de publicaciones{this.state.whoIs}</Text>
                      <View style={styles.form}>
                         <TextInput 
@@ -59,7 +59,7 @@ class Search extends Component {
                         <TouchableOpacity
                             style={styles.button} 
                             onPress={()=>this.search(this.state.email)}
-                            //👇 Les dejo un dato sorpresa para los que llegaron hasta acá: así se deshabilita un touchable opacity
+                           
                             disabled= {this.state.email == '' ? true : false }
                             >
                             <Text style={ styles.buttonText}>Go</Text>
