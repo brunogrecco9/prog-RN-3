@@ -18,16 +18,13 @@ class Register extends Component{
         }
     }
 
-    onSubmit() {
-        console.log(this.state);
-    }
-
     render(){
         console.log(this.state.email);
         console.log(this.state.password);
         console.log(this.state.username)
         console.log(this.props);
 
+        
         //para un contenedor del form, utilizamos el view
         return(
             <View style={styles.container}> 
