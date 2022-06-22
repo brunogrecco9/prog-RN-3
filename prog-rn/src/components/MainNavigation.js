@@ -57,7 +57,7 @@ class MainNavigation extends Component {
         auth.createUserWithEmailAndPassword(email, password)
             .then( responseRegister => { //Como es un metodo asincronico usamos un .then con una respuesta que usamos dentro de una function
                 console.log(responseRegister); 
-                gi
+                
                 //Guardar documento en colección de usuarios.
                db.collection('users').add({
                  email: email,
