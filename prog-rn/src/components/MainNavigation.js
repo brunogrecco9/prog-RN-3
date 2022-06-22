@@ -86,7 +86,7 @@ class MainNavigation extends Component {
     
 
     render(){
-        //Stack.Group funciona como React.Fragment y nos permite agrupar Screens.
+       
         console.log('En el render del menu: ' + this.state.registerError);
         return(
             <NavigationContainer>
