@@ -49,7 +49,7 @@ class Search extends Component {
         return(
                 <View style= {styles.containerB}>
                 
-                    <Text style= {styles.buscador}>Buscador de publicaciones{this.state.whoIs}</Text>
+                    <Text style= {styles.buscador}>Buscador de publicaciones</Text>
                      <View style={styles.form}>
                         <TextInput 
                             style={styles.field}

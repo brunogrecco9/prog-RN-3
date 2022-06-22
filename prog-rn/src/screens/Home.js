@@ -36,7 +36,7 @@ class Home extends Component {
             }
         )
         
-        /*db.collection("users")
+        db.collection("users")
             .where("email", "==", auth.currentUser.email)
             // .orderBy("createdAt", "desc")
             .onSnapshot(
@@ -55,7 +55,7 @@ class Home extends Component {
                     });
                    ;
                 }
-            );*/
+            )
     }
     
 

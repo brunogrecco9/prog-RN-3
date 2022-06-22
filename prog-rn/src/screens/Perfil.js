@@ -19,9 +19,9 @@ class Profile extends Component {
     
     componentDidMount(){
         db.collection('posts')
-        .orderBy("createdAt","desc")
-        .where("owner", "==", auth.currentUser.email)
-        .onSnapshot(
+        .orderBy("createdAt","desc") //dos parametros, 1) sobre que propiedad del documento debe buscar (en este caso la fecha de creacion) 2) el criterio de ordenamiento, en este caso "desc"
+        .where("owner", "==", auth.currentUser.email)  //parametros que recibe where son 3: 1) sobre que propiedad del doc debe buscar (en este caso "owner") 2) criterio de comparacion (en este caso debe ser "igual" 3)el texto que debe ser igual )
+        .onSnapshot(  //porque aca puedo hacer esta combinacion??
             docs => {
                 let posteos = [];
                 docs.forEach( oneDoc => {
@@ -35,7 +35,7 @@ class Profile extends Component {
                 })
             }
         )
-        /*db.collection("users")
+        db.collection("users")
             .where("email", "==", auth.currentUser.email)
             .onSnapshot(
                 (docs) => {
@@ -48,12 +48,12 @@ class Profile extends Component {
                     }); 
                     console.log(postsAux)
                     this.setState({
-                        //username: postsAux[0].data.userName,
+                        username: postsAux[0].data.userName,
                         loader: false,
                     });
                     ;
                 }
-            );*/
+            );
         }
     
     
@@ -63,27 +63,30 @@ class Profile extends Component {
         return(
                 <View style = {styles.mainContainer}>
                     <View style = {styles.containerSuperior}>
-                        <View style = {styles.infoContainer}>
-                            <Text style = {styles.profileName}>{this.state.username}</Text>
-                            <Text style = {styles.profileInfo}>{auth.currentUser.email}</Text>
-                           
-                        </View>
+                        <View style = {styles.containerSuperior1}>
+                            <View style = {styles.infoContainer}>
+                                <Text style = {styles.profileName}>{this.state.username}</Text>
+                                <Text style = {styles.profileInfo}>{auth.currentUser.email}</Text>
+                            </View>                       
                         
-                       
                             <TouchableOpacity style = {styles.button} onPress={()=>this.props.route.params.logout()}>
                                 <Text style = {styles.buttonText}>Logout</Text>
                             </TouchableOpacity>
+                        </View>
                         
+                        <View style = {styles.containerSuperior2}>
+                            <Text><b>Posteos: </b>{this.state.posts.length}</Text>
+                            <Text><b>Última conexión: </b>{auth.currentUser.metadata.lastSignInTime}</Text>
+                        </View>
                     </View>
-                    <View style = {styles.postContainer}>
+                    <View style = {styles.container}>
                         <FlatList 
+                            style = {styles.flat}
                             data={this.state.posts}
                             keyExtractor={post => post.id}
                             renderItem = { ({item}) => <Post info={item} {...this.props} />}
                         />
-                    </View>
-                    <Text style = {styles.profileInfo}> Último inicio de sesión: {auth.currentUser.metadata.lastSignInTime}</Text>
-                            
+                    </View>                            
                 </View>
         )
     }
@@ -95,12 +98,19 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     containerSuperior:{
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent:'space-between',
         marginBottom: 24,
-        paddingBottom: 24,
+        paddingBottom: 16,
         borderBottomWidth: 1,
         borderColor: '#D6DADF'
+    },
+    containerSuperior1:{
+        flexDirection:'row',
+        justifyContent: 'space-between'
+    },
+    containerSuperior2:{
+        paddingVertical:8
     },
     infoContainer:{
     },
@@ -126,6 +136,15 @@ const styles = StyleSheet.create({
     },
     buttonText:{
         color: 'white'
-    }
+    },
+    flat: {
+        width: "100",
+    },
+
+    container: {
+        flexDirection: 'column',
+        flex: 1,
+        alignItems: 'center'
+    },
 })
 export default Profile;

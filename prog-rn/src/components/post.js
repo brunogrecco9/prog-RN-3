@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity,Image } from 'react-native'
+import Ionicons from "react-native-vector-icons/Ionicons";
 import React, {Component} from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 import {auth, db} from '../firebase/config'
@@ -61,6 +62,13 @@ class Post extends Component {
         )
         .catch(error=> console.log(error))
     }
+
+    deletePost(deletedPostId) {
+        const posteoActualizarEliminado = db
+          .collection("posts")
+          .doc(this.props.info.id)
+          .delete();
+      }
     
 
 
@@ -71,6 +79,16 @@ class Post extends Component {
                 <View style={styles.container}>
 
                     <View style={styles.containerSuperior}>
+                    {this.props.info.data.owner == auth.currentUser.email ? (
+                        <TouchableOpacity
+                            style={styles.botonBorrar}
+                            onPress={() => {
+                            this.deletePost(this.props.info.data.id);
+                            }}
+                        >
+                            <Ionicons name="close" size="24px" color="black" />
+                        </TouchableOpacity>
+                        ) : null}
 
                         <View style={styles.containerFoto}>
                             <Image style={styles.camara} source={{uri: documento.foto}} />
@@ -170,7 +188,14 @@ const styles= StyleSheet.create({
         width: '100%',
         paddingHorizontal: 16,
         paddingBottom:20,
-    }
+    },
+    botonBorrar: {
+        alignSelf: "flex-end",
+        padding: 10,
+        marginTop: 2,
+        marginBottom: 10,
+        borderRadius: 4,
+      },
 })
 
 export default Post
