@@ -100,7 +100,9 @@ class MainNavigation extends Component {
                             options = {{headerShown: false}}
                             initialParams = {{ logout: ()=> this.logout()}}
                         />
-                        <Stack.Screen name="Comments" component={Comments}/>
+                        <Stack.Screen 
+                        name="Comments" 
+                        component={Comments}/>
                     </Stack.Group> 
                     :
                     <Stack.Group> 
