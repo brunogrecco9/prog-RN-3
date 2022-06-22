@@ -14,7 +14,7 @@ class Home extends Component {
         super(props);
         this.state={
             posts:[], //array de datos posts
-            username:auth.currentUser.email
+            username: ''
         }
     }
     
@@ -55,7 +55,7 @@ class Home extends Component {
                     });
                    ;
                 }
-            )
+            );
     }
     
 

@@ -76,7 +76,7 @@ class Profile extends Component {
                         
                         <View style = {styles.containerSuperior2}>
                             <Text><b>Posteos: </b>{this.state.posts.length}</Text>
-                            <Text><b>Última conexión: </b>{auth.currentUser.metadata.lastSignInTime}</Text>
+                            <Text><b>Última conexión: </b>Última conexión: {auth.currentUser.metadata.lastSignInTime}</Text>
                         </View>
                     </View>
                     <View style = {styles.container}>
